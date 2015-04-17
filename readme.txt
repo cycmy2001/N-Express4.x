@@ -1,3 +1,3 @@
-nodejs express4.x+后台管理系统模板bootstrap_ace_v1.3.2 框架
+nodejs express4.x+鍚庡彴绠＄悊绯荤粺妯℃澘bootstrap_ace_v1.3.2 妗嗘灦
 
-实现连接sql数据库，login，remmerber me 等等
+瀹炵幇杩炴帴sql鏁版嵁搴擄紝login锛宺emmerber me 绛夌瓑

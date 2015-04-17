@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head><% include ../partials/head %>
+    <script type="text/javascript">
+        jQuery(function($) {
+            $('#loginBtn').on('click', function(e) {
+                $('#frmLogin').submit();
+                e.preventDefault();
+            });
+        });
+
+    </script>
+</head>
+<body class="login-layout light-login">
+    <div class="main-container">
+        <div class="main-content">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div class="login-container">
+                        <div class="center">
+                            <h1>
+                                <i class="ace-icon fa fa-leaf green"></i>
+                                <span class="red">KD</span>
+                                <span class="grey" id="id-text2">Application</span>
+                            </h1>
+                        </div>
+
+                        <div class="space-6"></div>
+
+                        <div class="position-relative">
+                            <div id="login-box" class="login-box visible widget-box no-border">
+                                <div class="widget-body">
+                                    <div class="widget-main">
+                                        <h4 class="header blue lighter bigger">
+                                            <i class="ace-icon fa fa-coffee green"></i>
+                                            Please Enter Your Information
+                                        </h4>
+
+                                        <div class="space-6"></div>
+
+                                        <form id="frmLogin" action="/login" method="post" role="form">
+
+                                            <fieldset>
+                                                <label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="text" class="form-control" placeholder="LoginName" name="loginName" value="admin"/>
+															<i class="ace-icon fa fa-user"></i>
+														</span>
+                                                </label>
+
+                                                <label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="password" class="form-control" placeholder="Password" name="password" value="admin"/>
+															<i class="ace-icon fa fa-lock"></i>
+														</span>
+                                                </label>
+
+                                                <div class="space"></div>
+
+                                                <div class="clearfix">
+                                                    <label class="inline">
+                                                        <input type="checkbox" class="ace" name="remember_me" value="yes"/>
+                                                        <span class="lbl"> 保存一周</span>
+                                                    </label>
+
+                                                    <button id="loginBtn" type="button" class="width-35 pull-right btn btn-sm btn-primary">
+                                                        <i class="ace-icon fa fa-key"></i>
+                                                        <span class="bigger-110">Login</span>
+                                                    </button>
+                                                </div>
+
+                                                <div class="space-4"></div>
+                                            </fieldset>
+                                        </form>
+                                    </div><!-- /.widget-main -->
+                                </div><!-- /.widget-body -->
+                            </div><!-- /.login-box -->
+                        </div><!-- /.position-relative -->
+                    </div>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.main-content -->
+    </div><!-- /.main-container -->
+    <script type="text/javascript">
+        if('ontouchstart' in document.documentElement) document.write("<script src='/assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
+    </script>
+</body>
+</html>

@@ -15,15 +15,33 @@ Route
 
     .get('/logout',function(req,res){
         req.logout();
-        res.redirect('/');
+        res.redirect('/login');
     })
     .get('/home',auth.hasLoginMenu,function(req,res){
+        console.log(pkg.sys.uploadPath);
         res.render("pages/home");
     })
+
     .get('/menu/:dir/:page',auth.hasLoginMenu,menuNavMiddleware,function(req,res){
         var dir = req.params.dir;
         var page = req.params.page;
         res.render('pages/'+dir+'/'+page);
+    })
+    .post('/upload',function(req,res){
+        var form = new pkg.sys.formidable.IncomingForm(),
+            files = [],
+            fields = [];
+        form.uploadDir = pkg.sys.uploadPath;
+        form.encoding = 'utf-8';
+        form.keepExtensions = true;
+        //form.multiples=true;
+        //console.log(form);
+
+        form.parse(req, function(err, fields, files) {
+            res.writeHead(200, {'content-type': 'text/plain'});
+            res.write('received upload:\n\n');
+            res.end(pkg.sys.util.inspect({fields: fields, files: files}));
+        });
     });
 
     function menuNavMiddleware(req,res,next){

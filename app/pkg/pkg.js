@@ -1,4 +1,6 @@
 "use strict";
+var path = require('path');
+var rootPath = path.normalize(__dirname + '/../..');
 exports.sys= {
     express:require('express'),
     expressValidator:require('express-validator'),
@@ -7,7 +9,7 @@ exports.sys= {
     fs:require('fs'),
     http:require('http'),
     querystring:require('querystring'),
-    path:require('path'),
+    path:path,
     util:require('util'),
     url:require('url'),
     morgan:require('morgan'),
@@ -17,7 +19,7 @@ exports.sys= {
     cookieParser:require('cookie-parser'),
     responseTime:require('response-time'),
     compression:require('compression'),
-    multer:require('multer'),
+    formidable:require('formidable'),
     lodash:require('lodash'),
     methodOverride:require('method-override'),
     errorHandler:require('errorhandler'),
@@ -29,7 +31,8 @@ exports.sys= {
     ejsLocalsEngine:require('ejs-locals'),
     passport:require('passport'),
     passportLocal:require('passport-local'),
-
+    rootPath:rootPath,
+    uploadPath:path.normalize(rootPath + '/upload'),
     packageJson:require('../../package.json')
 
 };

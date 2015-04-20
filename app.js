@@ -9,7 +9,8 @@ app.config = config;
 pkg.sys.async.auto({
 
     connectDb: function(callback){
-        require('./app/database/mssql-database')(config, pkg.sys.mssql,callback);
+        //require('./app/database/mssql-database')(config, pkg.sys.mssql,callback);
+        callback(null,'connectDb initial.')
     },
     passport:['connectDb', function(callback){
         require('./app/config/passport')(config, pkg.sys.passport);

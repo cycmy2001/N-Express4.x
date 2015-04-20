@@ -5,15 +5,20 @@ var LocalStrategy = pkg.sys.passportLocal.Strategy;
 module.exports = function (config,passport) {
     // serialize sessions
     passport.serializeUser(function(user, done) {//保存user对象
-        console.log('保存user对象 '+user);
+        //console.log('保存user对象 '+user);
         done(null, user.USER_ID);
     });
     passport.deserializeUser(function(id, done) {//删除user对象
-        console.log('删除user对象 '+id);
-        var userDao = new pkg.mssqlDao.UserDao();
-        userDao.findById(id,function(err,user){
-            done(err, user);
-        });
+        //console.log('删除user对象 '+id);
+        //var userDao = new pkg.mssqlDao.UserDao();
+        //userDao.findById(id,function(err,user){
+        //    done(err, user);
+        //});
+        var user ={
+            USER_ID:1,
+            USER_NAME:'admin'
+        };
+        done(null, user);
     });
 
     //Use the LocalStrategy within Passport.
@@ -28,22 +33,29 @@ module.exports = function (config,passport) {
                 req.session.cookie.maxAge = 1000*60*60*24*7;
             }
             process.nextTick(function () {
-                var userDao = new pkg.mssqlDao.UserDao();
-                userDao.findByLoginName(loginName,function(err,user){
-                    if (err) return done(err);
-                    if (!user){
-                        console.log('User Not Found with loginName '+loginName);
-                        return done(null, false, req.flash('error', loginName + ' 不存在.'));
-                    }
-                    // User exists but wrong password, log the error
-                    if (!isValidPassword(user, password)){
-                        console.log('Invalid Password');
-                        return done(null, false,req.flash('error', '密码不正确.'));
-                    }
-                    // User and password both match, return user from
-                    // done method which will be treated like success
-                    return done(null, user);
-                });
+                //var userDao = new pkg.mssqlDao.UserDao();
+                //userDao.findByLoginName(loginName,function(err,user){
+                //    if (err) return done(err);
+                //    if (!user){
+                //        console.log('User Not Found with loginName '+loginName);
+                //        return done(null, false, req.flash('error', loginName + ' 不存在.'));
+                //    }
+                //    // User exists but wrong password, log the error
+                //    if (!isValidPassword(user, password)){
+                //        console.log('Invalid Password');
+                //        return done(null, false,req.flash('error', '密码不正确.'));
+                //    }
+                //    // User and password both match, return user from
+                //    // done method which will be treated like success
+                //    return done(null, user);
+                //});
+
+
+                var user ={
+                    USER_ID:1,
+                    USER_NAME:'admin'
+                };
+                return done(null, user);
             });
         }
     ));

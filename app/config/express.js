@@ -30,7 +30,6 @@ module.exports = function (app, express,passport) {
     }
     app.use(pkg.sys.bodyParser.urlencoded({extended: true}));
     app.use(pkg.sys.bodyParser.json());
-    app.use(pkg.sys.multer());
     app.use(pkg.sys.expressValidator());
     //app.use(pkg.sys.cookieParser());
     app.use(pkg.sys.methodOverride());

@@ -1,8 +1,16 @@
 <!-- #section:basics/sidebar -->
 <script>
+    $(function(){
+        $(".nav.nav-list li a").on("click", function () {
+            $(".nav.nav-list li.active").removeClass();
+            if($(this).attr('href')!=='#'){
+                $(this).parent().addClass('active');
+            }
+        });
+    });
     function goto(url,nav){
         url='/menu'+url+'?nav='+encodeURIComponent(nav);
-        $("#iframepage").attr("src",url)
+        $("#iframepage").attr("src",url);
     }
 </script>
 <div id="sidebar" class="sidebar responsive">
@@ -10,7 +18,7 @@
         try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
     </script>
     <ul class="nav nav-list">
-        <li class="">
+        <li class="active">
             <a href="javascript:goto('/dashboard/dashboard','Dashboard')">
                 <i class="menu-icon fa fa-tachometer"></i>
                 <span class="menu-text"> Dashboard </span>
@@ -43,6 +51,27 @@
                     </a>
                     <b class="arrow"></b>
                 </li>
+            </ul>
+        </li>
+        <li class="">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-pencil-square-o"></i>
+                <span class="menu-text"> Forms </span>
+
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu">
+                <li class="">
+                    <a href="javascript:goto('/forms/dFileUpload','Forms,Dropzone File Upload')">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Dropzone File Upload
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+
             </ul>
         </li>
     </ul><!-- /.nav-list -->

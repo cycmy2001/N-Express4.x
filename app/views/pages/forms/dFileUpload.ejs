@@ -1,0 +1,63 @@
+<% layout('../../partials/pages-layout') %>
+<!-- page specific plugin styles -->
+
+<div class="page-content">
+    <div class="widget-box">
+        <div class="widget-header">
+            <h4 class="widget-title">Custom File Input</h4>
+
+            <div class="widget-toolbar">
+                <a href="#" data-action="collapse">
+                    <i class="ace-icon fa fa-chevron-up"></i>
+                </a>
+
+                <a href="#" data-action="close">
+                    <i class="ace-icon fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="widget-body">
+            <div class="widget-main">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <form action="/upload" enctype="multipart/form-data" method="post">
+                            <!-- #section:custom/file-input -->
+                            <input type="text" name="title"><br>
+                            <input type="file" id="id-input-file-2" name="upload"/>
+                            <input type="submit" value="Upload">
+                        </form>
+                    </div>
+                </div>
+
+                <!-- #section:custom/file-input.filter -->
+                <label></label>
+                <!-- /section:custom/file-input.filter -->
+            </div>
+        </div>
+    </div>
+    <!-- /.page-content -->
+
+    <!-- inline scripts related to this page -->
+    <script src="/assets/js/dropzone.js"></script>
+
+    <script type="text/javascript">
+        jQuery(function ($) {
+            $('#id-input-file-2,#id-input-file-3').ace_file_input({
+                no_file:'No File ...',
+                btn_choose:'Choose',
+                btn_change:'Change',
+                droppable:false,
+                onchange:null,
+                thumbnail:false //| true | large
+                //whitelist:'gif|png|jpg|jpeg'
+                //blacklist:'exe|php'
+                //onchange:''
+                //
+            });
+
+        });
+    </script>
+
+
+
